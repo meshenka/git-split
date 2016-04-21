@@ -33,16 +33,16 @@ split() {
 
     mkdir -p $dest
     cd $dest
- 
-   # if there is no .git folder then it is a first split we clone repo
+
+    # if there is no .git folder then it is a first split we clone repo
     if [ ! -d ".git" ]; then
-       echo "----"
-       echo "Repository not initialized"
-       echo ""
+        echo "----"
+        echo "Repository not initialized"
+        echo ""
         git init
         git remote add splited $repo
-       echo "Repository initialized. Remote defined to $repo"
-       echo ""
+        echo "Repository initialized. Remote defined to $repo"
+        echo ""
     fi
 
     # we get master
@@ -61,26 +61,26 @@ split() {
     echo "----"
     echo "found $nbcommit to merge"
     echo ""
-    
-    if [$nbcount != 0]; then
-	git pull --no-ff $PATH_MONOREPO $branch --no-edit
 
-    	# edit last message
-	echo "----"
-	echo "Update merge message"
-	echo ""
-	#TODO build a better message
-	git amend -F- <<EOF
+    if [$nbcount != 0]; then
+        git pull --no-ff $PATH_MONOREPO $branch --no-edit
+
+        # edit last message
+        echo "----"
+        echo "Update merge message"
+        echo ""
+        # TODO build a better message
+        git amend -F- <<EOF
 (split) Splited from sgp/smart-answer
 
 CHANGELOG: Automaticaly merged with split.sh
 EOF
 
         # push to master
-	echo "----"
-	echo "Push to $repo / master"
-	echo ""
-	git push -u splited master
+        echo "----"
+        echo "Push to $repo / master"
+        echo ""
+        git push -u splited master
     fi
 
     cd $PATH_MONOREPO
@@ -95,10 +95,10 @@ EOF
 while [ "$1" != "" ]; do
     case $1 in
         -h | --help )           usage
-                                exit
-                                ;;
+        exit
+        ;;
         * )                     usage
-                                exit 1
+        exit 1
     esac
     shift
 done
@@ -130,5 +130,3 @@ while true; do
 done
 
 exit 0
-
-
