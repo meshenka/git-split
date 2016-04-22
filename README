@@ -1,0 +1,42 @@
+split.sh
+
+My attempt at automate @fabpot monorepo to multirepo stragegy
+according to what he describe in his keynote symfony live paris
+2016
+
+All advanced features @fabpot talked about
+  * performance issues
+  * volume on hard drive
+  * tagging
+
+Are not implemented yet. It is just a way to have a feel for it
+
+Some stuff TO DO
+  * propagate tags to mulitrepo
+  * build a smart merge commit message
+  * setup config in a rc file
+  * nicer logs and error reporting
+  * build better checks for each steps to avoid bad pushes
+
+Advanced tasks would be
+  * maintaining multiple branches
+
+Quotes from @fabpot
+@see http://paris2016.live.symfony.com/speakers#session-1728
+  Google and Facebook store their codebase into one giant code repository.
+  Symfony has been doing the same thanks to Git and some secret sauce with great
+  success since 2010.
+
+  Having only one repository makes code management much easier for end users and
+  core contributors: one central place to submit pull requests and report bugs,
+  simple cross-project atomic changes, fast releases, and more.
+
+  But what about users wanting to use only one component? Enter "repository
+  splitting". After learning some theory about subtree splits and how to create
+  them with the Git built-in but slow "subtree" command, I will talk about the
+  tool I developed using libgit2 and Go to make the process almost real time.
+
+  If you have a microservice oriented architecture and manage one repository per
+  microservice, you could probably benefit from using the same technique with
+  one repository for development and read-only splits for packaging and
+  deployment.
